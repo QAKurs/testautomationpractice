@@ -1,0 +1,24 @@
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TestAutomationPractice.Pages
+{
+    class AuthPage
+    {
+        readonly IWebDriver driver;
+        public By authPage = By.Id("authentication");
+        public By username = By.Id("email");
+        public By password = By.Id("passwd");
+        public By signInBtn = By.Id("SubmitLogin");
+
+        public AuthPage(IWebDriver driver)
+        {
+            this.driver = driver;
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(authPage));
+        }
+    }
+}
